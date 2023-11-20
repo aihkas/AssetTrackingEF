@@ -18,9 +18,9 @@ For non-Windows users or those who prefer to use Docker, SQL Server can be run a
 
 1. Pull the SQL Server Docker image:
 
-   ```
-   docker pull mcr.microsoft.com/mssql/server:2019-latest
-   ```
+```
+docker pull mcr.microsoft.com/mssql/server:2019-latest
+```
 
 Run the SQL Server container:
 
@@ -35,7 +35,7 @@ Update the connection string in AssetContext class to match the Docker SQL Serve
 ```
 optionsBuilder.UseSqlServer(@"Server=localhost,1433;Database=AssetTrackingDb;User ID=SA;Password=Yourpassword1");
 ```
-Add Encrypt=False;TrustServerCertificate=True to the connection string if you encounter any SSL/TLS related issues.
+Add `Encrypt=False;TrustServerCertificate=True` to the connection string if you encounter any SSL/TLS related issues.
 
 ### Running Migrations
 
