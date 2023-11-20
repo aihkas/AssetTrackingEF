@@ -42,7 +42,7 @@ public class AssetContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=AssetTrackingDb;Trusted_Connection=True;");
+        optionsBuilder.UseSqlServer(@"Server=localhost,1433;Initial Catalog=AssetTrackingDb;User ID=SA;Password=Yourpassword1;Encrypt=True;TrustServerCertificate=True");
     }
 }
 
