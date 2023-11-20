@@ -30,7 +30,7 @@ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Yourpassword1" -p 1433:1433 --name
 
 Replace `Yourpassword1` with a strong password of your choice.
 
-Update the connection string in AssetContext class to match the Docker SQL Server configuration if you're not using the default:
+Update the connection string in the AssetContext class to match the Docker SQL Server configuration if you're not using the default:
 
 ```
 optionsBuilder.UseSqlServer(@"Server=localhost,1433;Database=AssetTrackingDb;User ID=SA;Password=Yourpassword1");
@@ -68,6 +68,3 @@ If you encounter any issues or have suggestions, please open an issue in the rep
 
 Contributions to this project are welcome. Please fork the repository and submit a pull request with your changes.
 
-### License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
