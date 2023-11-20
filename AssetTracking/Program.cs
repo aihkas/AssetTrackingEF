@@ -70,9 +70,11 @@ public class AssetService
 
     public List<Asset> GetAllAssets()
     {
-        return _context.Assets
-            .Include(a => a.Office)
-            .ToList();
+        // This will combine laptops and mobile phones into a single list of assets.
+        var laptops = _context.Laptops.Include(l => l.Office).Cast<Asset>();
+        var mobilePhones = _context.MobilePhones.Include(m => m.Office).Cast<Asset>();
+
+        return laptops.Concat(mobilePhones).ToList();
     }
 
     public List<Office> GetAllOffices()
