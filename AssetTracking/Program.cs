@@ -42,7 +42,7 @@ public class AssetContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"Server=localhost,1433;Initial Catalog=AssetTrackingDb;User ID=SA;Password=Yourpassword1;Encrypt=True;TrustServerCertificate=True");
+        optionsBuilder.UseSqlServer(@"Server=localhost,1433;Initial Catalog=AssetTrackingDb;User ID=SA;Password=Youpassword1;Encrypt=True;TrustServerCertificate=True");
     }
 }
 
@@ -70,9 +70,9 @@ public class AssetService
 
     public List<Asset> GetAllAssets()
     {
-        // This will combine laptops and mobile phones into a single list of assets.
-        var laptops = _context.Laptops.Include(l => l.Office).Cast<Asset>();
-        var mobilePhones = _context.MobilePhones.Include(m => m.Office).Cast<Asset>();
+        // Force the query to execute and bring the data into memory before concatenating.
+        var laptops = _context.Laptops.Include(l => l.Office).ToList().Cast<Asset>();
+        var mobilePhones = _context.MobilePhones.Include(m => m.Office).ToList().Cast<Asset>();
 
         return laptops.Concat(mobilePhones).ToList();
     }
